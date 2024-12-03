@@ -15,7 +15,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
-          cache: npm
+      - name: version nodejs
+        run: node -v
       - name: install dependencies
         run: npm i
       - name: starting
