@@ -18,5 +18,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: node -v
-      - name: 'run BotWa'
-        run: node index.js
+      - name: Run TestCafe
+      - uses: actions/checkout@v1
+      - uses: DevExpress/testcafe-action@latest
+        with:
+          args: 'chrome tests'
