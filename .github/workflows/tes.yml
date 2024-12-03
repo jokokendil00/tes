@@ -16,8 +16,8 @@ jobs:
           node-version: 'latest'
           check-latest: true
           cache: 'npm'
-      - run: npm ci
-      - run: node -v
+      - name: cek versi nodejs
+        run: node -v
       - name: Run TestCafe
       - uses: actions/checkout@v1
       - uses: DevExpress/testcafe-action@latest
