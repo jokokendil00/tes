@@ -22,7 +22,7 @@ const Connecting = async ({update, client, Boom, DisconnectReason, sleep, operat
                operate(); 
               } else if (messageconnect === DisconnectReason.connectionReplaced) { 
                console.log("Another connection is replaced, please close this connection first");    
-              process.exit(); 
+              operate(); 
               } else if (messageconnect === DisconnectReason.restartRequired) { 
                console.log("An error occurred, reconnecting🔄"); 
                setTimeout( () => {
@@ -35,7 +35,7 @@ const Connecting = async ({update, client, Boom, DisconnectReason, sleep, operat
                }, 10000)             
               } else if (messageconnect === DisconnectReason.loggedOut) { 
               console.log(`Device is out, please re-scan🔄`);    
-              process.exit();               
+              operate()              
               } else if (messageconnect === DisconnectReason.timedOut) { 
                console.log("Connection reached the limit, please reload🔄"); 
                operate(); 
