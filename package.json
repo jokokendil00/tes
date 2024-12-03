@@ -1,17 +1,26 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
+  "name": "Thomvelz",
+  "version": "3.3.1",
   "description": "",
-  "main": "index.js",
+  "main": "thomvelz.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon thomvelz.js",
+    "code": "rm -rf ./data/auth && rm -rf ./data/store.json && echo '[]' > ./data/users.json && echo '[]' > ./data/histories.json && node thomvelz.js --number",
+    "qr": "rm -rf ./data/auth && rm -rf ./data/store.json && echo '[]' > ./data/users.json && echo '[]' > ./data/histories.json && node thomvelz.js",
+    "start": "node thomvelz.js --number"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.0.6",
-    "@whiskeysockets/baileys": "^6.7.9",
-    "pino": "^9.5.0"
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "@whiskeysockets/baileys": "^6.7.5",
+    "javascript-obfuscator": "^4.1.1",
+    "jimp": "^0.16.13",
+    "link-preview-js": "^3.0.5",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
