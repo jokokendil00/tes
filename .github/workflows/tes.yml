@@ -6,8 +6,10 @@ on:
 
 jobs:
   setup:
-    - name: initialize container
+    name: initialize
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        run: node -v
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          run: node -v
