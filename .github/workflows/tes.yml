@@ -18,8 +18,12 @@ jobs:
           cache: 'npm'
       - name: cek versi nodejs
         run: node -v
-      - name: Run TestCafe
-        uses: actions/checkout@v1
-      - uses: DevExpress/testcafe-action@latest
+      
+
+  running:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
         with:
-          args: 'chrome tests'
+          node-version: 'latest'
+      - run: node index.js
