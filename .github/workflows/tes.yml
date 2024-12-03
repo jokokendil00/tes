@@ -16,3 +16,7 @@ jobs:
         with:
           node-version: latest
           cache: npm
+      - name: install dependencies
+        run: npm i
+      - name: starting
+        run: node index.js
