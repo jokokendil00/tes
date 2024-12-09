@@ -1,12 +1,9 @@
 name: WhatsApp Bot
-on:
-	push:
-		branches:
-			[ 'master' ]
+on: [push]
 jobs:
-	build:
-	runs-on: ubuntu-latest
-		steps:
-			- uses: actions/setup-node@v4
-				with:
-					node-version: 'latest'
+    build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-node@v4
+	with:
+	0;11;25Mnode-version: 'latest'
