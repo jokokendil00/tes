@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/auth", (req, res) => {
-    res.send("auth bang");
+    res.sendFile(path.join(__dirname, '..', 'components', 'auth.htm'))
 });
 
 app.listen(3000, () => console.log("Server ready on port 3000."));

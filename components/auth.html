@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="15773200525-5b5jo5p4g9oeidafli5atjf5vkvgpkc7.apps.googleusercontent.com">
+    <title>Authenticated</title>
+</head>
+<body>
+<p id="nama">NAMA</p>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <br>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+
+    <script>
+        function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          var nama = document.getElementById('nama')
+            nama.innerHTML = profile.getName()
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+              alert('logout')
+            });
+          }
+    </script>
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>
