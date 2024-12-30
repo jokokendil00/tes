@@ -9,5 +9,6 @@ jobs:
       with:
         repository: "jokokendil00/github-actions-demo-sub"
         path: "github-actions-demo-sub"
+        ref: "master"
     - uses: actions/setup-node@v3
     - run: npm install
