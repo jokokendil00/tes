@@ -1,0 +1,6 @@
+[submodule "actSub"]
+	path = actSub
+	url = https://github.com/nektos/act/
+[submodule "github-actions-demo-sub"]
+	path = github-actions-demo-sub
+	url = https://github.com/cplee/github-actions-demo
