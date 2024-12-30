@@ -1,17 +1,11 @@
 name: CI
-on: [ push, workflow_dispatch ]
+on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: "jokokendil00/github-actions-demo",
-        path: "github-actions-demo"
-    - name: setup tmate session
-      if: success() || failure()
-      uses: mxschmitt/action-tmate@v3
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - run: npm install
+    - run: npm test
