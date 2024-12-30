@@ -9,6 +9,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        repository: "jokokendil00/github-actions-demo",
+        path: "github-actions-demo"
     - name: setup tmate session
       if: success() || failure()
       uses: mxschmitt/action-tmate@v3
