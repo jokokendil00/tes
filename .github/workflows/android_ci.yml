@@ -30,8 +30,11 @@ jobs:
         with:
           ndk-version: r26d
           add-to-path: false
+          local-cache: true
         env:
           ANDROID_HOME: ${{ steps.setupndk.outputs.ndk-path  }}
+        
+      - run: which sdkmanager
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
