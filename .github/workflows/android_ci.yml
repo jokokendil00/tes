@@ -26,8 +26,12 @@ jobs:
 
       - name: Setup Android NDK
         uses: nttld/setup-ndk@v1.5.0
+        id: setupndk
         with:
           ndk-version: r26d
+          add-to-path: false
+        env:
+          ANDROID_HOME: ${{ steps.setupndk.outputs.ndk-path  }}
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
@@ -35,7 +39,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{github.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_ARCH_ABI="arm64-v8a" -DCMAKE_ANDROID_NDK="$ANDROID_HOME/ndk/21.0.6113669" -DCMAKE_SYSTEM_VERSION=21 -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_ARCH_ABI="arm64-v8a" -DCMAKE_ANDROID_NDK="$ANDROID_HOME -DCMAKE_SYSTEM_VERSION=21 -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
 
       - name: Build
         working-directory: ${{github.workspace}}/build
