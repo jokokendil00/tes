@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - master
     paths-ignore:
       - '.gitignore'
       - '**/.gitignore'
@@ -22,12 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-          fetch-depth: 0
 
-      - name: Install NDK
-        run: echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'ndk;21.0.6113669'
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1.5.0    
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
