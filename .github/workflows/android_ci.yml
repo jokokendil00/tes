@@ -16,9 +16,9 @@ jobs:
 
       - name: Prepare NDK dir for caching ( workaround for https://github.com/actions/virtual-environments/issues/1337 )
         run: |
-          sudo -s mkdir -p /usr/local/lib/android/sdk/ndk
-          sudo -s chmod -R 777 /usr/local/lib/android/sdk/ndk
-          sudo -s chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+          sudo -S mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo -S chmod -R 777 /usr/local/lib/android/sdk/ndk
+          sudo -S chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
       - name: NDK Cache
         id: ndk-cache
         uses: actions/cache@v2
