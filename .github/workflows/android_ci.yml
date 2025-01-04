@@ -5,17 +5,7 @@ on:
     branches:
       - develop
       - master
-    paths-ignore:
-      - '.gitignore'
-      - '**/.gitignore'
-      - '*.md'
-      - '**/*.md'
-  pull_request:
-    paths-ignore:
-      - '.gitignore'
-      - '**/.gitignore'
-      - '*.md'
-      - '**/*.md'
+
   workflow_dispatch:
 
 jobs:
@@ -24,17 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Android NDK
-        uses: nttld/setup-ndk@v1.5.0
-        id: setupndk
+      - name: Prepare NDK dir for caching ( workaround for https://github.com/actions/virtual-environments/issues/1337 )
+        run: |
+          sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
+          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+      - name: NDK Cache
+        id: ndk-cache
+        uses: actions/cache@v2
         with:
-          ndk-version: r26d
-          add-to-path: false
-          local-cache: true
-        env:
-          ANDROID_HOME: ${{ steps.setupndk.outputs.ndk-path  }}
-        
-      - run: which sdkmanager
+          path: /usr/local/lib/android/sdk/ndk
+          key: ndk-cache-21.0.6113669-v2
+      - name: Install NDK
+        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669"
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build
